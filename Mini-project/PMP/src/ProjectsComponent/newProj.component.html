@@ -1,0 +1,60 @@
+<h3 class="text-success">New Project form</h3>
+<hr>
+<div class="row">
+    <form class="form-horizontal" [formGroup]="newForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="code" class="control-label col-sm-2">Code: </label>
+            <div class="col-sm-6">
+                <input type="number" formControlName="code" class="form-control" id="code" />
+            </div>
+            <div class="col-sm-4" class="text-danger" *ngIf="newForm.get('code').hasError('required') && newForm.get('code').touched">
+                <p>Code is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="name" class="control-label col-sm-2">Project Name:</label>
+            <div class="col-sm-6">
+                <input type="text" formControlName="name" class="form-control" id="name">
+            </div>
+            <div class="col-sm-4 text-danger" *ngIf="newForm.get('name').hasError('required') && newForm.get('name').touched">
+                <p>Name is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="group" class="control-label col-sm-2">Group Name:</label>
+            <div class="col-sm-6">
+                <input type="text" formControlName="group" class="form-control" id="group">
+            </div>
+            <div class="col-sm-4 text-danger" *ngIf="newForm.get('group').hasError('required') && newForm.get('group').touched">
+                <p>Group is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sdate" class="control-label col-sm-2">Start date:</label>
+            <div class="col-sm-6">
+                <input type="date" formControlName="sdate" class="form-control" id="sdate">
+            </div>
+            <div class="col-sm-4 text-danger" *ngIf="newForm.get('sdate').hasError('required') && newForm.get('sdate').touched">
+                <p>Star date is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="edate" class="control-label col-sm-2">End date:</label>
+            <div class="col-sm-6">
+                <input type="date" formControlName="edate" class="form-control" id="edate">
+            </div>
+            <div class="col-sm-4 text-danger" *ngIf="newForm.get('edate').hasError('required') && newForm.get('edate').touched">
+                <p>End date is required</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-3 col-sm-offset-2">
+                <button [disabled]="!newForm.valid" type="submit" class="btn btn-primary btn-block">Submit</button>
+            </div>
+            <div class="col-sm-3">
+                <button type="reset" class="btn btn-default btn-block">Reset</button>
+            </div>
+            <!-- <a [routerLink]="['/employees']" class="btn btn-link">Cancel</a> -->
+        </div>
+    </form>
+</div>

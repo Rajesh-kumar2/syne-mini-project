@@ -1,0 +1,56 @@
+<h4 class="text-success" id="eeee">New Employee Form</h4>
+<hr>
+<div class="col-sm-6 col-sm-offset-3">
+    <div class="jumbotron" id="jtm">
+        <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="id">Employee id</label>
+                <input type="number" formControlName="id" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.id.errors }" />
+                <div *ngIf="submitted && f.id.errors" class="invalid-feedback">
+                    <div *ngIf="f.id.errors.required" class="text-danger">Employee id Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required" class="text-danger">First Name is required</div>
+                    </div>
+                </div>
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required" class="text-danger">Last Name is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="designation">Designation</label>
+                <input type="text" formControlName="designation" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.designation.errors }" />
+                <div *ngIf="submitted && f.designation.errors" class="invalid-feedback">
+                    <div *ngIf="f.designation.errors.required" class="text-danger">Designation is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="platform">Platform</label>
+                <input type="text" formControlName="platform" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.platform.errors }" />
+                <div *ngIf="submitted && f.platform.errors" class="invalid-feedback">
+                    <div *ngIf="f.platform.errors.required" class="text-danger">Platform is required</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="image">Employee Image</label>
+                <input type="file" id="image" class="form-control" formControlName="empImg" #empImg />
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <button [disabled]="!newForm.valid" type="submit" class="btn btn-primary btn-block">Submit</button>
+                </div>
+                <div class="col-sm-6">
+                    <button type="reset" class="btn btn-default btn-block">Reset</button>
+                </div>
+                <!-- <a [routerLink]="['/employees']" class="btn btn-link">Cancel</a> -->
+            </div>
+        </form>
+    </div>
+</div>

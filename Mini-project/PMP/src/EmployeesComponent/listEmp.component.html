@@ -1,0 +1,132 @@
+<h3 class="text-success">List of Employees</h3>
+<hr>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="text-center">
+                    <tr>
+                        <th class="text-center">Id</th>
+                        <th class="text-center">First Name</th>
+                        <th class="text-center">Last Name</th>
+                        <th class="text-center">Designation</th>
+                        <th class="text-center">Platform</th>
+                        <th class="text-center">Photo</th>
+                        <th class="text-center">Details</th>
+                        <th class="text-center">Update</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+                    <tr *ngFor="let emp of employees">
+                        <td>{{emp.id}}</td>
+                        <td>{{emp.firstName}}</td>
+                        <td>{{emp.lastName}}</td>
+                        <td>{{emp.designation}}</td>
+                        <td>{{emp.platform}}</td>
+                        <td><img src="../public/images/me.jpg" width="30" height="30" alt="img"></td>
+                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".empmodal"
+                                (click)="empDetails(emp)">Details</button></td>
+                        <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".empmodalupdate"
+                                (click)="empDetails(emp)">update</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade empmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-info" id="modalTitle">Employee Details</h4>
+            </div>
+            <div class="modal-body text-center">
+                <label for="id">Id: {{employee.id}}</label><br>
+                <label for="fname">First Name: {{employee.firstName}}</label><br>
+                <label for="lname">Last Name: {{employee.lastName}}</label><br>
+                <label for="designation">Designation: {{employee.designation}}</label><br>
+                <label for="platform">Platform: {{employee.platform}}</label><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade empmodalupdate" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-info" id="modalTitle">Update Employee Form</h4>
+            </div>
+            <div class="modal-body ">
+                <div class="row">
+                    <form class="form-horizontal" [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="id" class="control-label col-sm-3">Employee id: </label>
+                            <div class="col-sm-6">
+                                <input type="text" formControlName="id" class="form-control" id="id" [(ngModel)]=employee.id />
+                            </div>
+                            <div class="col-sm-3" class="text-danger" *ngIf="updateForm.get('id').hasError('required') && updateForm.get('id').touched">
+                                <p>Employee id is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstName" class="control-label col-sm-3">First Name: </label>
+                            <div class="col-sm-6">
+                                <input type="text" formControlName="firstName" class="form-control" id="firstName" [(ngModel)]=employee.firstName />
+                            </div>
+                            <div class="col-sm-3" class="text-danger" *ngIf="updateForm.get('firstName').hasError('required') && updateForm.get('firstName').touched">
+                                <p>FirstName Name is required</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName" class="control-label col-sm-3">Last Name: </label>
+                            <div class="col-sm-6">
+                                <input type="text" formControlName="lastName" class="form-control" id="lastName" [(ngModel)]=employee.lastName />
+                            </div>
+                            <div class="col-sm-3" class="text-danger" *ngIf="updateForm.get('lastName').hasError('required') && updateForm.get('lastName').touched">
+                                <p>Last Name is required</p>
+                            </div>
+                        </div>
+                       <div class="form-group">
+                            <label for="designation" class="control-label col-sm-3">Designation: </label>
+                            <div class="col-sm-6">
+                                <input type="text" formControlName="designation" class="form-control" id="designation"
+                                    [(ngModel)]=employee.designation />
+                            </div>
+                            <div class="col-sm-3" class="text-danger" *ngIf="updateForm.get('designation').hasError('required') && updateForm.get('designation').touched">
+                                <p>Designation is required</p>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="platform" class="control-label col-sm-3">Platform: </label>
+                            <div class="col-sm-6">
+                                <input type="text" formControlName="platform" class="form-control" id="platform"
+                                    [(ngModel)]=employee.platform />
+                            </div>
+                            <div class="col-sm-3" class="text-danger" *ngIf="updateForm.get('platform').hasError('required') && updateForm.get('platform').touched">
+                                <p>Platform is required</p>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="image" class="control-label col-sm-3">Employee Image: </label>
+                            <div class="col-sm-6">
+                                <input type="file" formControlName="empImg" class="form-control" id="image"/>
+                            </div>
+                            <div class="col-sm-3" class="text-danger" *ngIf="updateForm.get('platform').hasError('required') && updateForm.get('platform').touched">
+                                <p>Platform is required</p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

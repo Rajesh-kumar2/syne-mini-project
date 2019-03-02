@@ -1,0 +1,52 @@
+<h3 class="text-success text-center" *ngIf="!hide">List of Projects</h3>
+<div>
+    <a [routerLink]="['newproject']" class="btn btn-success btn-clock" (click)="new()" *ngIf="!hide">New Project</a>
+</div>
+<br>
+<div *ngIf="!hide">
+    <table class="table table-stripped table-bordered">
+        <thead>
+            <tr>
+                <th class="text-center">Code</th>
+                <th class="text-center">Name</th>
+                <th class="text-center">Group</th>
+                <th class="text-center">Start Date</th>
+                <th class="text-center">End Date</th>
+                <th class="text-center">Details</th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            <tr *ngFor="let item of projects">
+                <td>{{item.code}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.group}}</td>
+                <td>{{item.sdate}}</td>
+                <td>{{item.edate}}</td>
+                <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target=".projmodal" (click)="projDetails(item)">Details</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="hide">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="modal fade projmodal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-info" id="modalTitle">Project Details</h4>
+            </div>
+            <div class="modal-body text-center">
+                <label for="id">Code: {{project.code}}</label><br>
+                <label for="name">Project name: {{project.name}}</label><br>
+                <label for="group">Group: {{project.group}}</label><br>
+                <label for="sdate">Start date: {{project.sdate}}</label><br>
+                <label for="edate">End date: {{project.edate}}</label><br>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

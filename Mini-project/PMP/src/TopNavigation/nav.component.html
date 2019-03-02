@@ -1,0 +1,41 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" routerLink=""><span class="glyphicon glyphicon-home"></span></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav" id="mybarleft">
+                <!-- <li>
+                <a routerLink=""><span class="glyphicon glyphicon-home"></span></a>
+            </li> -->
+                <li>
+                    <a routerLink="/employees">Employees</a>
+                </li>
+                <li>
+                    <a routerLink="/projects">Projects</a>
+                </li>
+                <li>
+                    <a routerLink="/tasks">Tasks</a>
+                </li>
+                <li>
+                    <a routerLink="/bugs">Bugs</a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" id="mybarright">
+                <li>
+                    <a routerLink="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                </li>
+                <li>
+                    <a routerLink="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
